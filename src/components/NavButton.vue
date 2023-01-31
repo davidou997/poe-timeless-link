@@ -3,7 +3,8 @@
     tile
     :color="hover ? 'white' : ''"
     @mouseenter="hover = true"
-    @mouseleave="hover = false">
+    @mouseleave="hover = false"
+    @click="$router.push(route)">
     <v-icon
         v-if="iconName"
         :color="hover ? hoverColor : defaultColor"
@@ -27,8 +28,12 @@ export default {
             required: false,
             type: String
         },
-        text: { //Text displayed on button
+        text: { //Text displayed on
             required: false,
+            type: String
+        },
+        route: { //Route when button is clicked
+            required: true,
             type: String
         }
     },
