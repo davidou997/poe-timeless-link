@@ -11,6 +11,9 @@
               <jewel-button
                 :img="jewel.img"
                 :name="jewel.name"
+                :id="jewel.id"
+                :curr="current"
+                @selectJewel="setJewel"
               />
             </v-row>
           </v-col>
@@ -39,33 +42,43 @@ export default {
   },
   data() {
     return {
-      current: 'pride'
+      current: 'pride' //The selected jewel
     }
   },
   computed: {
-    jewels() {
+    jewels() { //Jewel information, will be moved to store
       return [
         {
           name: 'Lethal Pride',
-          img: pride
+          img: pride,
+          id: 'pride'
         },
         {
           name: 'Brutal Restraint',
-          img: restraint
+          img: restraint,
+          id: 'restraint'
         },
         {
           name: 'Glorious Vanity',
-          img: vanity
+          img: vanity,
+          id: 'vanity'
         },
         {
           name: 'Militant Faith',
-          img: faith
+          img: faith,
+          id: 'faith'
         },
         {
           name: 'Elegant Hubris',
-          img: hubris
+          img: hubris,
+          id: 'hubris'
         }
       ]
+    }
+  },
+  methods: {
+    setJewel: function(id) { //Sets the currently selected jewel
+      this.current = id;
     }
   }
 }

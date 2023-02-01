@@ -2,16 +2,17 @@
     <v-btn
         tile
         block
-        :color="hover ? '#182028' : 'transparent'"
+        :color="(hover || id === curr) ? '#182028' : 'transparent'"
         elevation="0"
         class="text-none jewel-button py-7"
         @mouseenter="hover = true"
-        @mouseleave="hover = false">
+        @mouseleave="hover = false"
+        @click="selectJewel">
         <img 
             :src="img"
             :alt="name"
             class="jewel-img mr-3">
-        <span class="jewel-name" :class="hover ? 'underline' : ''"> {{ name }}</span>
+        <span class="jewel-name" :class="(hover || id === curr) ? 'underline' : ''"> {{ name }}</span>
     </v-btn>
 </template>
 
@@ -20,16 +21,29 @@ export default {
     props: {
         img: { //Image of the jewel
             required: true,
-            type: Image
+            type: String
         },
         name: { //Name of the jewel
+            required: true,
+            type: String
+        },
+        id: { //ID of the jewel
+            required: true,
+            type: String
+        },
+        curr: { //Currently selected jewel
             required: true,
             type: String
         }
     },
     data() {
-        return {
+        return { //If the button is being hovered on
             hover: false
+        }
+    },
+    methods: {
+        selectJewel: function() { //Informs parent of selected jewel
+            this.$emit('selectJewel', this.id);
         }
     }
 }
