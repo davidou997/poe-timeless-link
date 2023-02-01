@@ -21,19 +21,11 @@
 <script>
 import PageCard from '../components/PageCard.vue'
 import JewelSelection from '@/components/JewelSelection.vue';
-// import JewelButton from '../components/JewelButton.vue'
-
-// import pride from '../assets/lethal_pride.png'
-// import restraint from '../assets/brutal_restraint.png'
-// import vanity from '../assets/glorious_vanity.png'
-// import faith from '../assets/militant_faith.png'
-// import hubris from '../assets/elegant_hubris.png'
 
 export default {
   components: {
     PageCard,
     JewelSelection,
-    // JewelButton
   },
   data() {
     return {

@@ -21,7 +21,7 @@ import hubris from '../assets/elegant_hubris.png'
 export default {
     data() {
         return {
-            current: ''
+            current: '' //The selected jewel
         }
     },
     components: {
@@ -64,7 +64,7 @@ export default {
 
         }
     },
-    mounted() {
+    mounted() { //Sets the selected jewel on mount
         this.current = 'pride'
         this.$emit('selectJewel', this.current)
     }
