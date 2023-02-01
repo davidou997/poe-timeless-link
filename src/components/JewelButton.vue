@@ -12,7 +12,7 @@
             :src="img"
             :alt="name"
             class="jewel-img mr-3">
-        <span class="jewel-name" :class="(hover || id === curr) ? 'underline' : ''"> {{ name }}</span>
+        <span class="jewel-name" :class="`${hover ? 'underline' : ''} ${id == curr ? 'jewel-selected' : ''}`"> {{ name }}</span>
     </v-btn>
 </template>
 
@@ -69,5 +69,8 @@ export default {
     font-size: 18px;
     text-overflow: clip;
     white-space: break-spaces;
+}
+.jewel-selected {
+    color: #10B77F;
 }
 </style>
