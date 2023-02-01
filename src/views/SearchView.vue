@@ -3,20 +3,15 @@
     <page-card>
       <v-container class="pa-3">
         <v-row class="pa-0">
-          <v-col cols="2">
+          <v-col cols="3">
             <v-row class="py-3 pl-5 jewel-text">
               <strong>JEWELS</strong>
             </v-row>
             <v-row v-for="(jewel, index) in jewels" :key="index">
-              <v-btn
-                tile
-                block
-                color="transparent"
-                left
-                class="text-none jewel-button py-5">
-                <img :src="jewel.img" :alt="jewel.name" class="jewel-img mr-2">
-                <span class="text"> {{ jewel.name }}</span>
-              </v-btn>
+              <jewel-button
+                :img="jewel.img"
+                :name="jewel.name"
+              />
             </v-row>
           </v-col>
           <v-col class="jewel-options">
@@ -30,6 +25,7 @@
 
 <script>
 import PageCard from '../components/PageCard.vue'
+import JewelButton from '../components/JewelButton.vue'
 import pride from '../assets/lethal_pride.png'
 import restraint from '../assets/brutal_restraint.png'
 import vanity from '../assets/glorious_vanity.png'
@@ -38,11 +34,12 @@ import hubris from '../assets/elegant_hubris.png'
 
 export default {
   components: {
-    PageCard
+    PageCard,
+    JewelButton
   },
   data() {
     return {
-      
+      current: 'pride'
     }
   },
   computed: {
@@ -75,19 +72,11 @@ export default {
 </script>
 
 <style scoped>
-.jewel-img {
-  height: 2em;
-  width: 2em;
-  vertical-align: middle;
-}
 .jewel-options {
   background-color: #1D262F;
 }
 .jewel-text {
-  color: #636D76;
+  color: #909BA6;
   font-size: 14px;
-}
-.jewel-button {
-  justify-content: left;
 }
 </style>
