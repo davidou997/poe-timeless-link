@@ -64,6 +64,6 @@ export default {
 
 <style scoped>
 .local-font{
-    font-size: 15px;
+    font-size: 19px;
 }
 </style>

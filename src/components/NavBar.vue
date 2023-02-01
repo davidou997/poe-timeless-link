@@ -10,7 +10,7 @@
         @mouseenter="hover = true"
         @mouseleave="hover = false"
         @click="goHome()">
-        <img class="title-img mr-2" :src="jewel" alt="Timeless Jewel">
+        <img class="title-img mr-3" :src="jewel" alt="Timeless Jewel">
         <span :class="hover ? 'nav-hover': 'text'" class="text-none local-font">timeless.bulk</span>
       </v-btn>
     </v-toolbar-title>
@@ -71,10 +71,10 @@ export default {
 <style scoped>
 .title-img {
   vertical-align: middle;
-  height: 2em;
-  width: 2em;
+  height: 3em;
+  width: 3em;
 }
 .local-font {
-  font-size: 20px;
+  font-size: 25px;
 }
 </style>
