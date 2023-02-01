@@ -4,7 +4,7 @@
     :color="hover ? 'white' : ''"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
-    @click="$router.push(route)">
+    @click="goToRoute()">
     <v-icon
         v-if="iconName"
         :color="hover ? hoverColor : defaultColor"
@@ -39,7 +39,16 @@ export default {
     },
     data() {
         return {
-            hover: false //If the button is hovered
+            hover: false, //If the button is hovered
+            onCurrRoute: false
+        }
+    },
+    methods: {
+        goToRoute: function() { //Goes to routed page if the current page isn't the intended destination
+            if(!(this.$route.name.toLowerCase() === this.route.substring(1))){
+                console.log('yes')
+                this.$router.push(this.route)
+            }
         }
     },
     computed: {
@@ -48,8 +57,8 @@ export default {
         },
         defaultColor() { //Default colour of nav button
             return '#F5F7FA'
-        }
-    }
+        },
+    },
 }
 </script>
 
