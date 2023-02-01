@@ -37,4 +37,7 @@ export default {
   text-decoration: underline;
   color: #10B77F;
 }
+.body-text {
+  color: #D3D5D9;
+}
 </style>
