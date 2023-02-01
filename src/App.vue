@@ -26,7 +26,9 @@ export default {
 
 <style>
 .v-application {
-  background-color: #1D262F;
+  background-image: url('./assets/highgate.jpg');
+  background-size: cover;
+  
 }
 .text {
   color: #F5F7FA
