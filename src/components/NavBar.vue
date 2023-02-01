@@ -16,10 +16,11 @@
     </v-toolbar-title>
     <v-toolbar-items>
       <nav-button
-        :icon-name="'mdi-magnify'"
-        :text="'Search'"
-        :route="'/search'"
-      />
+        v-for="(item, index) in navigationInfo"
+        v-bind:key="index"
+       :icon-name="item.iconName"
+       :text="item.name"
+       :route="item.route"/>
     </v-toolbar-items>
   </v-toolbar>
 </template>
@@ -40,9 +41,30 @@ export default {
   data: function() {
     return {
       jewel: jewel, //Image of the title jewel
-      hover: false //If the titel is
+      hover: false //If the title is is hovered on
     }
   },
+  computed: {
+    navigationInfo() {
+      return [
+        {
+          name: 'Home',
+          iconName: 'mdi-home',
+          route: '/'
+        },
+        {
+          name: 'About',
+          iconName: 'mdi-help',
+          route: '/about'
+        },
+        {
+          name: 'Search',
+          iconName: 'mdi-magnify',
+          route: '/search'
+        },
+      ]
+    }
+  }
 }
 </script>  
 
