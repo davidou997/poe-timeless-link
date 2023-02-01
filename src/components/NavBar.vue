@@ -34,7 +34,7 @@ export default {
     NavButton
   },
   methods: {
-    goHome: function() {
+    goHome: function() { //Goes to home page
       this.$router.push('/')
     }
   },
@@ -45,7 +45,7 @@ export default {
     }
   },
   computed: {
-    navigationInfo() {
+    navigationInfo() { //Info for navigation buttons
       return [
         {
           name: 'Home',
