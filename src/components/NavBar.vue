@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import jewel from "./../assets/Timeless_Jewel_inventory_icon.png"
+import jewel from "../assets/timeless_jewel.png"
 import NavButton from "./NavButton.vue"
 
 export default {
