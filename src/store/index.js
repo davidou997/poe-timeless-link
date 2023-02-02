@@ -7,7 +7,7 @@ export default createStore({
       'pride': {
         name: 'Lethal Pride',
         img: require('@/assets/lethal_pride.png'),
-        entities: [
+        conqs: [
           {
             name: 'Akoya'
           },
@@ -22,7 +22,7 @@ export default createStore({
       'restraint': {
         name: 'Brutal Restraint',
         img: require('@/assets/brutal_restraint.png'),
-        entities: [
+        conqs: [
           {
             name: 'Akoya'
           },
@@ -37,7 +37,7 @@ export default createStore({
       'vanity': {
         name: 'Glorious Vanity',
         img: require('@/assets/glorious_vanity.png'),
-        entities: [
+        conqs: [
           {
             name: 'Akoya'
           },
@@ -52,7 +52,7 @@ export default createStore({
       'faith': {
         name: 'Militant Faith',
         img: require('@/assets/militant_faith.png'),
-        entities: [
+        conqs: [
           {
             name: 'Akoya'
           },
@@ -67,7 +67,7 @@ export default createStore({
       'hubris': {
         name: 'Elegant Hubris',
         img: require('@/assets/elegant_hubris.png'),
-        entities: [
+        conqs: [
           {
             name: 'Akoya'
           },
@@ -89,7 +89,10 @@ export default createStore({
     getJewelImg: state => id => {
       return state.jewels[id].img
     },
-    getJewels: state => Object.keys(state.jewels)
+    getJewels: state => Object.keys(state.jewels),
+    getJewelConqs: state => id => {
+      return state.jewels[id].conqs
+    }
   },
   mutations: {
     setCurrentJewel(state, payload) {
