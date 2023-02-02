@@ -9,13 +9,19 @@ export default createStore({
         img: require('@/assets/lethal_pride.png'),
         conqs: [
           {
-            name: 'Akoya'
+            name: 'Akoya',
+            keystone: 'Chainbreaker',
+            img: require('@/assets/keystone_chainbreaker.png')
           },
           {
-            name: 'Kaom'
+            name: 'Kaom',
+            keystone: 'Strength of Blood',
+            img: require('@/assets/keystone_strength_of_blood.png')
           },
           {
-            name: 'Rakiata'
+            name: 'Rakiata',
+            keystone: 'Tempered by War',
+            img: require('@/assets/keystone_tempered_by_war.png')
           }
         ]
       },
@@ -24,13 +30,19 @@ export default createStore({
         img: require('@/assets/brutal_restraint.png'),
         conqs: [
           {
-            name: 'Akoya'
+            name: 'Asenath',
+            keystone: 'Dance with Death',
+            img: require('@/assets/keystone_dance_with_death.png')
           },
           {
-            name: 'Kaom'
+            name: 'Balbala',
+            keystone: 'The Traitor',
+            img: require('@/assets/keystone_the_traitor.png')
           },
           {
-            name: 'Rakiata'
+            name: 'Nasima',
+            keystone: 'Second Sight',
+            img: require('@/assets/keystone_second_sight.png')
           }
         ]
       },
@@ -39,13 +51,19 @@ export default createStore({
         img: require('@/assets/glorious_vanity.png'),
         conqs: [
           {
-            name: 'Akoya'
+            name: 'Ahuana',
+            keystone: 'Immortal Ambition',
+            img: require('@/assets/keystone_immortal_ambition.png')
           },
           {
-            name: 'Kaom'
+            name: 'Doryani',
+            keystone: 'Corrupted Soul',
+            img: require('@/assets/keystone_corrupted_soul.png')
           },
           {
-            name: 'Rakiata'
+            name: 'Xibaqua',
+            keystone: 'Divine Flesh',
+            img: require('@/assets/keystone_divine_flesh.png')
           }
         ]
       },
@@ -54,13 +72,19 @@ export default createStore({
         img: require('@/assets/militant_faith.png'),
         conqs: [
           {
-            name: 'Akoya'
+            name: 'Avarius',
+            keystone: 'Power of Purpose',
+            img: require('@/assets/keystone_power_of_purpose.png')
           },
           {
-            name: 'Kaom'
+            name: 'Dominus',
+            keystone: 'Inner Conviction',
+            img: require('@/assets/keystone_inner_conviction.png')
           },
           {
-            name: 'Rakiata'
+            name: 'Maxarius',
+            keystone: 'Transcendence',
+            img: require('@/assets/keystone_transcendence.png')
           }
         ]
       },
@@ -69,13 +93,19 @@ export default createStore({
         img: require('@/assets/elegant_hubris.png'),
         conqs: [
           {
-            name: 'Akoya'
+            name: 'Cadiro',
+            keystone: 'Supreme Decadence',
+            img: require('@/assets/keystone_supreme_decadence.png')
           },
           {
-            name: 'Kaom'
+            name: 'Caspiro',
+            keystone: 'Supreme Ostentation',
+            img: require('@/assets/keystone_supreme_ostentation.png')
           },
           {
-            name: 'Rakiata'
+            name: 'Victario',
+            keystone: 'Supreme Grandstanding',
+            img: require('@/assets/keystone_supreme_grandstanding.png')
           }
         ]
       }
