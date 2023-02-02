@@ -9,24 +9,16 @@
         @mouseleave="hover = false"
         @click="selectJewel">
         <img 
-            :src="img"
-            :alt="name"
+            :src="jewelImg"
+            :alt="jewelName"
             class="jewel-img mr-3">
-        <span class="jewel-name" :class="`${hover ? 'underline' : ''} ${id == curr ? 'jewel-selected' : ''}`"> {{ name }}</span>
+        <span class="jewel-name" :class="`${hover ? 'underline' : ''} ${id == curr ? 'jewel-selected' : ''}`"> {{ jewelName }}</span>
     </v-btn>
 </template>
 
 <script>
 export default {
     props: {
-        img: { //Image of the jewel
-            required: true,
-            type: String
-        },
-        name: { //Name of the jewel
-            required: true,
-            type: String
-        },
         id: { //ID of the jewel
             required: true,
             type: String
@@ -41,11 +33,19 @@ export default {
             hover: false
         }
     },
+    computed: {
+        jewelImg() {
+            return this.$store.getters.getJewelImg(this.id)
+        },
+        jewelName() {
+            return this.$store.getters.getJewelName(this.id)
+        }
+    },
     methods: {
         selectJewel: function() { //Informs parent of selected jewel
             this.$emit('selectJewel', this.id);
         }
-    }
+    },
 }
 </script>
 
