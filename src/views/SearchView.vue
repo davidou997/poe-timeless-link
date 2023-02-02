@@ -7,10 +7,11 @@
             <v-row class="py-3 pl-5 jewel-text">
               <strong>JEWELS</strong>
             </v-row>
-            <jewel-selection @selectJewel="setJewel"/>
+            <jewel-selection/>
           </v-col>
-          <v-col class="jewel-options">
-            Options
+          <v-col class="jewel-options pa-10">
+            <jewel-title/>
+            <jewel-form/>
           </v-col>
         </v-row>
       </v-container>
@@ -20,12 +21,16 @@
 
 <script>
 import PageCard from '../components/PageCard.vue'
-import JewelSelection from '@/components/JewelSelection.vue';
+import JewelSelection from '@/components/JewelSelection.vue'
+import JewelForm from '@/components/JewelForm.vue'
+import JewelTitle from '@/components/JewelTitle.vue'
 
 export default {
   components: {
     PageCard,
     JewelSelection,
+    JewelForm,
+    JewelTitle
   },
   data() {
     return {
@@ -46,6 +51,7 @@ export default {
 }
 .jewel-text {
   color: #909BA6;
-  font-size: 14px;
+  font-size: 15px;
+  text-decoration: solid;
 }
 </style>
