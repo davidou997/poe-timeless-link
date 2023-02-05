@@ -41,8 +41,10 @@ export default {
         }
     },
     methods: {
-        selectJewel: function() { //Informs parent of selected jewel
+        selectJewel: function() { //Informs parent of selected jewel, wipes current info
             this.$store.commit('setCurrentJewel', this.id)
+            this.$store.commit('clearSeeds')
+            this.$store.commit('clearConqs')
         }
     },
 }
