@@ -1,30 +1,43 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <v-app>
+    <NavBar></NavBar>
+    <v-main>
+      <router-view/>
+    </v-main>
+    <Footer></Footer>
+  </v-app>
 </template>
 
+<script>
+import Footer from './components/FooterComp.vue'
+import NavBar from './components/NavBar.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Footer,
+    NavBar
+  },
+  data: () => ({
+    //
+  }),
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.v-application {
+  background-image: url('./assets/highgate.jpg');
+  background-size: cover;
+  
 }
-
-nav {
-  padding: 30px;
+.text {
+  color: #F5F7FA
 }
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.nav-hover {
+  text-decoration: underline;
+  color: #10B77F;
 }
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.body-text {
+  color: #D3D5D9;
 }
 </style>
