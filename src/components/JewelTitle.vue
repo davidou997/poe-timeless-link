@@ -17,13 +17,13 @@
 <script>
 export default {
   computed: {
-    currentJewel() {
+    currentJewel() { //The currently selected jewel
       return this.$store.getters.getCurrentJewel
     },
-    currentJewelName() {
+    currentJewelName() { //The name of the currently selected jewel
       return this.$store.getters.getJewelName(this.currentJewel)
     },
-    currentJewelImg() {
+    currentJewelImg() { //The image of the currently selected jewel
       return this.$store.getters.getJewelImg(this.currentJewel)
     }
   }

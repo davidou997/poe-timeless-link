@@ -20,7 +20,7 @@
 <script>
 export default {
     data() {
-        return {
+        return { //If the button is hovered on
             buttonHov: false
         }
     },
