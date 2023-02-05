@@ -23,6 +23,7 @@
   <v-row>
     <v-col class="mt-5">
       <v-row class="text steps-text">3. Generate links</v-row>
+      <v-row></v-row>
     </v-col>
   </v-row>
 </template>
@@ -37,10 +38,10 @@ export default {
     ConqSeeds
   },
   computed: {
-    currentJewel() {
+    currentJewel() { //The current jewel
       return this.$store.getters.getCurrentJewel
     },
-    conquerors() {
+    conquerors() { //The conquerors of the current jewel
       return this.$store.getters.getJewelConqs(this.currentJewel)
     }
   }
