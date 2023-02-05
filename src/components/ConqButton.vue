@@ -1,9 +1,9 @@
 <template>
     <v-btn
         flat
-        outlined
+        variant="outlined"
         top
-        x-large
+        size="large"
         class="mr-3 my-2"
         @mouseenter="hover = true"
         @mouseleave="hover = false"
@@ -74,7 +74,6 @@ export default {
   text-decoration: underline;
 }
 .v-btn {
-    border: 1px solid #10B77F;
     font-size: 15px;
 }
 </style>
