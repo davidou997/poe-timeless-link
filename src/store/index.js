@@ -5,6 +5,20 @@ export default createStore({
     currentJewel: 'pride',
     currentSeeds: new Set(),
     currentConqs: new Set(),
+    generatedLinks: [ //Temporary data 
+      {
+          link: 'Link 1',
+          seeds: [
+              'Seed 1', 'Seed 2'
+          ]
+      },
+      {
+          link: 'Link 2',
+          seeds: [
+              'Seed 3', 'Seed 4'
+          ]
+      }
+    ],
     jewels: {
       'pride': {
         name: 'Lethal Pride',
@@ -146,6 +160,9 @@ export default createStore({
     },
     getCurrentConqs: state => {
       return state.currentConqs
+    },
+    getGeneratedLinks: state => { //Returns generated links
+      return state.generatedLinks
     }
   },
   mutations: {
@@ -172,6 +189,9 @@ export default createStore({
     }
   },
   actions: {
+    generateLinks(context) { //Will generate links by contacting POE API
+      console.log(context)
+    }
   },
   modules: {
   }
