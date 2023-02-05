@@ -7,7 +7,8 @@
         class="mr-3 my-2"
         @mouseenter="hover = true"
         @mouseleave="hover = false"
-        :class="hover ? 'option-alt-text' : 'option-text'">
+        @click="toggleConq"
+        :class="(hover || currConqs.has(name)) ? 'option-alt-text' : 'option-text'">
         <img
         :src="img"
         :alt="keystone"
@@ -21,22 +22,37 @@
 <script>
 export default {
     props: {
-        img: {
+        img: { //The image of the conqueror keystone
             required: true,
             type: String
         },
-        name: {
+        name: { //The name of the conqueror
             required: true,
             type: String
         },
-        keystone: {
+        keystone: { //The name of the conqueror keystone
             required: true,
             type: String
         }
     },
     data() {
         return {
-            hover: false
+            hover: false //If the button is being hovered
+        }
+    },
+    computed: {
+        currConqs() { //The list of selected conqs
+            return this.$store.getters.getCurrentConqs
+        }
+    },
+    methods: {
+        toggleConq() { //Toggles the conq button
+            if(this.currConqs.has(this.name)) {
+                this.$store.commit('deleteConq', this.name)
+            } else {
+                this.$store.commit('submitConq', this.name)
+            }
+            
         }
     }
 }

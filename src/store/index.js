@@ -143,6 +143,9 @@ export default createStore({
     },
     getCurrentSeeds: state => {
       return state.currentSeeds
+    },
+    getCurrentConqs: state => {
+      return state.currentConqs
     }
   },
   mutations: {
@@ -154,6 +157,12 @@ export default createStore({
     },
     deleteSeed(state, payload) {
       state.currentSeeds.delete(payload)
+    },
+    submitConq(state, payload) {
+      state.currentConqs.add(payload)
+    },
+    deleteConq(state, payload) {
+      state.currentConqs.delete(payload)
     },
     clearSeeds(state) {
       state.currentSeeds.clear()
