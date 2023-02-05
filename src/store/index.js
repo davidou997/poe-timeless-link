@@ -3,10 +3,14 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     currentJewel: 'pride',
+    currentSeeds: new Set(),
+    currentConqs: new Set(),
     jewels: {
       'pride': {
         name: 'Lethal Pride',
         img: require('@/assets/lethal_pride.png'),
+        seedMin: 10000,
+        seedMax: 18000,
         conqs: [
           {
             name: 'Akoya',
@@ -28,6 +32,8 @@ export default createStore({
       'restraint': {
         name: 'Brutal Restraint',
         img: require('@/assets/brutal_restraint.png'),
+        seedMin: 500,
+        seedMax: 8000,
         conqs: [
           {
             name: 'Asenath',
@@ -49,6 +55,8 @@ export default createStore({
       'vanity': {
         name: 'Glorious Vanity',
         img: require('@/assets/glorious_vanity.png'),
+        seedMin: 100,
+        seedMax: 8000,
         conqs: [
           {
             name: 'Ahuana',
@@ -70,6 +78,8 @@ export default createStore({
       'faith': {
         name: 'Militant Faith',
         img: require('@/assets/militant_faith.png'),
+        seedMin: 2000,
+        seedMax: 10000,
         conqs: [
           {
             name: 'Avarius',
@@ -91,6 +101,8 @@ export default createStore({
       'hubris': {
         name: 'Elegant Hubris',
         img: require('@/assets/elegant_hubris.png'),
+        seedMin: 2000,
+        seedMax: 160000,
         conqs: [
           {
             name: 'Cadiro',
@@ -122,11 +134,32 @@ export default createStore({
     getJewels: state => Object.keys(state.jewels),
     getJewelConqs: state => id => {
       return state.jewels[id].conqs
+    },
+    getJewelMinSeed: state => id => {
+      return state.jewels[id].seedMin
+    },
+    getJewelMaxSeed: state => id => {
+      return state.jewels[id].seedMax
+    },
+    getCurrentSeeds: state => {
+      return state.currentSeeds
     }
   },
   mutations: {
     setCurrentJewel(state, payload) {
       state.currentJewel = payload
+    },
+    submitSeed(state, payload) {
+      state.currentSeeds.add(payload)
+    },
+    deleteSeed(state, payload) {
+      state.currentSeeds.delete(payload)
+    },
+    clearSeeds(state) {
+      state.currentSeeds.clear()
+    },
+    clearConqs(state) {
+      state.currentConqs.clear()
     }
   },
   actions: {
