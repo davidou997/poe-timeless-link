@@ -15,23 +15,23 @@
       </v-btn>
     </v-toolbar-title>
     <v-toolbar-items>
-      <nav-button
+      <!-- <nav-button
         v-for="(item, index) in navigationInfo"
         v-bind:key="index"
        :icon-name="item.iconName"
        :text="item.name"
-       :route="item.route"/>
+       :route="item.route"/> -->
     </v-toolbar-items>
   </v-toolbar>
 </template>
 
 <script>
 import jewel from "../assets/timeless_jewel.png"
-import NavButton from "./NavButton.vue"
+// import NavButton from "./NavButton.vue"
 
 export default {
   components: {
-    NavButton
+    // NavButton
   },
   methods: {
     goHome: function() { //Goes to home page
