@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col class="mt-5">
-      <v-row class="text steps-text">1. Select Conquerors</v-row>
+      <v-row class="text steps-text mb-0">1. Select Conquerors</v-row>
       <v-row>
           <conq-button
           v-for="(conq, index) in conquerors"
@@ -14,7 +14,7 @@
   </v-row>
   <v-row>
     <v-col class="mt-5">
-      <v-row class="text steps-text">2. Enter seeds</v-row>
+      <v-row class="text steps-text mb-0">2. Enter seeds</v-row>
       <v-row>
         <conq-seeds/>
       </v-row>
@@ -22,8 +22,13 @@
   </v-row>
   <v-row>
     <v-col class="mt-5">
-      <v-row class="text steps-text">3. Generate links</v-row>
-      <v-row></v-row>
+      <v-row class="text steps-text mb-0">3. Generate links</v-row>
+      <v-row class="mb-0">
+        <gen-link/>
+      </v-row>
+      <v-row>
+        <link-table/>
+      </v-row>
     </v-col>
   </v-row>
 </template>
@@ -31,11 +36,15 @@
 <script>
 import ConqButton from './ConqButton.vue';
 import ConqSeeds from './ConqSeeds.vue';
+import GenLink from './GenLink.vue';
+import LinkTable from './LinkTable.vue';
 
 export default {
   components: {
     ConqButton,
-    ConqSeeds
+    ConqSeeds,
+    GenLink,
+    LinkTable
   },
   computed: {
     currentJewel() { //The current jewel
