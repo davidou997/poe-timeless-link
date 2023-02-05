@@ -138,27 +138,27 @@ export default createStore({
     }
   },
   getters: {
-    getCurrentJewel: state => state.currentJewel,
-    getJewelName: state => id => {
+    getCurrentJewel: state => state.currentJewel, //Returns the id of the current jewel
+    getJewelName: state => id => { //Returns the name of the jewel from the passed id
       return state.jewels[id].name
     },
-    getJewelImg: state => id => {
+    getJewelImg: state => id => { //Returns the image of the jewel from the passed id
       return state.jewels[id].img
     },
-    getJewels: state => Object.keys(state.jewels),
-    getJewelConqs: state => id => {
+    getJewels: state => Object.keys(state.jewels), //Returns a list of jewels
+    getJewelConqs: state => id => { //Returns the list of conquerors of the jewel from the passed id
       return state.jewels[id].conqs
     },
-    getJewelMinSeed: state => id => {
+    getJewelMinSeed: state => id => { //Returns the minimum seed of the jewel from the passed id
       return state.jewels[id].seedMin
     },
-    getJewelMaxSeed: state => id => {
+    getJewelMaxSeed: state => id => { //Returns the maximum seed of the jewel from the passed id
       return state.jewels[id].seedMax
     },
-    getCurrentSeeds: state => {
+    getCurrentSeeds: state => { //Returns the currently selected seeds
       return state.currentSeeds
     },
-    getCurrentConqs: state => {
+    getCurrentConqs: state => { //Returns the currently selected conquerors
       return state.currentConqs
     },
     getGeneratedLinks: state => { //Returns generated links
@@ -166,25 +166,25 @@ export default createStore({
     }
   },
   mutations: {
-    setCurrentJewel(state, payload) {
-      state.currentJewel = payload
+    setCurrentJewel(state, id) { //Sets the id of the currently selected jewel
+      state.currentJewel = id
     },
-    submitSeed(state, payload) {
-      state.currentSeeds.add(payload)
+    submitSeed(state, seed) { //Adds the passed seed to the set
+      state.currentSeeds.add(seed)
     },
-    deleteSeed(state, payload) {
-      state.currentSeeds.delete(payload)
+    deleteSeed(state, seed) { //Removes the submitted seed from the set
+      state.currentSeeds.delete(seed)
     },
-    submitConq(state, payload) {
-      state.currentConqs.add(payload)
+    submitConq(state, conq) { //Adds the submitted conq to the set
+      state.currentConqs.add(conq)
     },
-    deleteConq(state, payload) {
-      state.currentConqs.delete(payload)
+    deleteConq(state, conq) { //Removes the submitted conq from the set
+      state.currentConqs.delete(conq)
     },
-    clearSeeds(state) {
+    clearSeeds(state) { //Clears all stored seeds
       state.currentSeeds.clear()
     },
-    clearConqs(state) {
+    clearConqs(state) { //Clears all stored conqs
       state.currentConqs.clear()
     }
   },
