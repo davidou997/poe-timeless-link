@@ -21,6 +21,7 @@
                 close-icon="mdi-close-circle"
                 color="#10B77F"
                 class="ma-1"
+                size="large"
                 @click.close="deleteSeed(seed)">
                 <span class="text">{{ seed }}</span>
             </v-chip>
