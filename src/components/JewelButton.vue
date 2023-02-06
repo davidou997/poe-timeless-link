@@ -45,6 +45,7 @@ export default {
             this.$store.commit('setCurrentJewel', this.id)
             this.$store.commit('clearSeeds')
             this.$store.commit('clearConqs')
+            this.$store.commit('clearLinks')
         }
     },
 }
