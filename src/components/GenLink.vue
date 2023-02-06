@@ -26,7 +26,6 @@ export default {
     },
     methods: {
         genLinks() { //Generates links based on selected criteria
-            //Needs to validate that there is at least one seed and one conqueror
             this.$store.dispatch('generateLinks')
         }
     }
