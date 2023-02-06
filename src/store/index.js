@@ -1,3 +1,4 @@
+// import axios from 'axios'
 import { createStore } from 'vuex'
 
 export default createStore({
@@ -5,20 +6,7 @@ export default createStore({
     currentJewel: 'pride',
     currentSeeds: new Set(),
     currentConqs: new Set(),
-    generatedLinks: [ //Temporary data 
-      {
-          link: 'Link 1',
-          seeds: [
-              'Seed 1', 'Seed 2'
-          ]
-      },
-      {
-          link: 'Link 2',
-          seeds: [
-              'Seed 3', 'Seed 4'
-          ]
-      }
-    ],
+    generatedLinks: [],
     jewels: {
       'pride': {
         name: 'Lethal Pride',
@@ -186,11 +174,67 @@ export default createStore({
     },
     clearConqs(state) { //Clears all stored conqs
       state.currentConqs.clear()
+    },
+    clearLinks(state) { //Clears all generated links
+      state.generatedLinks = []
+    },
+    addLink(state, link) { //Adds a link to the list of generated links
+      state.generatedLinks.push(link)
     }
   },
   actions: {
     generateLinks(context) { //Will generate links by contacting POE API
-      console.log(context)
+      let seeds = Array.from(context.getters.getCurrentSeeds)
+      let conqs = Array.from(context.getters.getCurrentConqs)
+      if(seeds.length > 0 && conqs.length > 0) { //Only do something if there are seeds and conqs
+        context.commit('clearLinks') //Clear all previous links
+        let chunkSize = Math.floor(38 / conqs.length) //Compute chunk size, max number of modifiers are 38
+        let chunks = []
+        let baseLink = 'https://www.pathofexile.com/trade/search/Sanctum/?q=' //Base trade link
+        let baseFilter = { //Base filter per modifier
+          id: '',
+          value: {
+            min: 0,
+            max: 0
+          }
+        }
+        let baseQuery = { //Base of the query
+          "query": {
+            "status": {
+              "option": "online"
+            },
+            "stats": [
+              {
+                "type": "count",
+                "min" : 1,
+                "filters": []
+              }
+            ]
+          }
+        }
+        for(let i = 0; i < seeds.length; i += chunkSize) {
+          chunks.push(seeds.slice(i, i + chunkSize))
+        }
+        chunks.forEach(chunk => {
+          let link = {
+            link: baseLink,
+            seeds: chunk
+          }
+          let query = {...baseQuery}
+          conqs.forEach(conq => {
+            let conqId = 'explicit.pseudo_timeless_jewel_' + conq.toLowerCase()
+            chunk.forEach(seed => {
+              let filter = {...baseFilter}
+              filter.id = conqId
+              filter.value.min = seed
+              filter.value.max = seed
+              query.query.stats[0].filters.push(filter)
+            })
+          })
+          link.link += JSON.stringify(query)
+          context.commit('addLink', link)
+        })
+      }
     }
   },
   modules: {

@@ -8,7 +8,7 @@
                 validate-on="input"
                 clearable
                 color="#10B77F"
-                :rules="[(currSeed ? rules.inRange : null)]"
+                :rules="currSeed ? [rules.inRange] : []"
                 :label="`${minSeed} - ${maxSeed}`"
                 @keydown.enter="submitSeed"/>
         </v-row>
