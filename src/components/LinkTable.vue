@@ -9,7 +9,7 @@
                 Link
             </th>
             <th class="text-left">
-                Seed
+                Seed(s)
             </th>
         </tr>
     </thead>
@@ -19,7 +19,11 @@
             :key="index"
             class="column-text">
             <td>
-                <a href="">{{ link.link }}</a>
+                <a :href="link.link"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    {{ link.link }}
+                </a>
             </td>
             <td>
                 {{ seedString(link.seeds) }}
