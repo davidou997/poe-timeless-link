@@ -220,11 +220,11 @@ export default createStore({
             link: baseLink,
             seeds: chunk
           }
-          let query = {...baseQuery}
+          let query = JSON.parse(JSON.stringify(baseQuery))
           conqs.forEach(conq => {
             let conqId = 'explicit.pseudo_timeless_jewel_' + conq.toLowerCase()
             chunk.forEach(seed => {
-              let filter = {...baseFilter}
+              let filter = JSON.parse(JSON.stringify(baseFilter))
               filter.id = conqId
               filter.value.min = seed
               filter.value.max = seed
