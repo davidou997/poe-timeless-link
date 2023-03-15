@@ -41,6 +41,7 @@ export default {
     },
     computed: {
         currentJewel() { //The current jewel
+            this.clearSeed() //When the current jewel changes, AKA recomputed, clear seed field
             return this.$store.getters.getCurrentJewel
         },
         minSeed() { //The minimum seed of the current jewel
@@ -57,11 +58,14 @@ export default {
         submitSeed: function() { //Submits the seed if valid and clears the field
             if(this.currSeed && this.currSeed >= this.minSeed && this.currSeed <= this.maxSeed) {
                 this.$store.commit('submitSeed', this.currSeed)
-                this.currSeed = ''
+                this.clearSeed()
             }
         },
         deleteSeed: function(seed) { //Deletes the seed from the chip
             this.$store.commit('deleteSeed', seed)
+        },
+        clearSeed: function() {
+            this.currSeed = ''
         }
     }
 }
