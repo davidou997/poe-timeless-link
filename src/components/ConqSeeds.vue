@@ -10,6 +10,8 @@
                 color="#10B77F"
                 :rules="currSeed ? [rules.inRange] : []"
                 :label="`${minSeed} - ${maxSeed}`"
+                persistent-hint
+                hint="Press Enter key to submit seed"
                 @keydown.enter="submitSeed"/>
         </v-row>
         <v-row>
