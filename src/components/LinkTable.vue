@@ -1,5 +1,6 @@
 <template>
   <v-table
+    v-if="links.length > 0"
     fixed-header
     class="link-table mt-2"
     density="comfortable">

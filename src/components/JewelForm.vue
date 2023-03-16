@@ -14,7 +14,7 @@
   </v-row>
   <v-row>
     <v-col class="mt-5">
-      <v-row class="text steps-text mb-0">2. Enter seeds</v-row>
+      <v-row class="text steps-text mb-0">2. Enter Seeds</v-row>
       <v-row>
         <conq-seeds/>
       </v-row>
@@ -22,7 +22,7 @@
   </v-row>
   <v-row>
     <v-col class="mt-5">
-      <v-row class="text steps-text mb-0">3. Generate links</v-row>
+      <v-row class="text steps-text mb-0">3. Generate Links</v-row>
       <v-row class="mb-0">
         <gen-link/>
       </v-row>
