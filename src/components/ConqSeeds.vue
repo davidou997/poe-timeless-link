@@ -17,7 +17,10 @@
         <v-row>
             <v-card
                 class="pa-1 pb-3"
-                variant="outlined">
+                variant="outlined"
+                @mouseenter="submitHover = true"
+                @mouseleave="submitHover = false"
+                :class="submitHover ? 'submitHover' : ''">
                 <v-card-title>Submitted Seeds</v-card-title>
                 <v-card-subtitle
                     v-if="noSeeds"><i>Submit a seed above!</i>
@@ -36,7 +39,6 @@
                         <span class="text">{{ seed }}</span>
                     </v-chip>
                 </div>
-                
             </v-card>
         </v-row>
     </v-container>
@@ -50,7 +52,8 @@ export default {
             rules: { //Rules to display error messages for input
                 inRange: value => (value >= this.minSeed && value <= this.maxSeed) || 'Must be within range',
             },
-            noSeeds: true
+            noSeeds: true,
+            submitHover: false
         }
     },
     computed: {
@@ -99,9 +102,13 @@ export default {
     color: #10B77F;
 }
 .v-card {
-    color: #10b77f69;
+    color: #185E4D;
     width: 100%;
     background-color: transparent;
+    transition: color 0.3s ease;
+}
+.v-card.submitHover {
+    color: #10B77F;
 }
 .v-card-title {
     font-size: 17px;
