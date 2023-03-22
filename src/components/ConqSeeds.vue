@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container class="pa-3">
         <v-row>
             <v-text-field
                 class="mt-3 mb-2"
@@ -16,12 +16,46 @@
         </v-row>
         <v-row>
             <v-card
-                class="pa-1 pb-3"
+                class="pa-1 pb-3 submitted-seeds"
                 variant="outlined"
                 @mouseenter="submitHover = true"
                 @mouseleave="submitHover = false"
                 :class="submitHover ? 'submitHover' : ''">
-                <v-card-title>Submitted Seeds</v-card-title>
+                <v-card-title>
+                    <span>Submitted Seeds</span>
+                    <v-btn
+                        v-if="!noSeeds"
+                        variant="plain"
+                        icon="mdi-delete"
+                        class="clear-seeds"
+                        position="absolute">
+                        <v-icon>mdi-delete</v-icon>
+                        <v-dialog
+                            v-model="showSeedDialog"
+                            activator="parent"
+                            width="auto"
+                            transition="fade-transition">
+                            <v-card>
+                                <v-card-text>
+                                    Are you sure you want to clear all seeds?
+                                </v-card-text>
+                                <v-card-actions>
+                                    <v-btn
+                                        class="ml-2"
+                                        variant="plain"
+                                        @click="clearAllSeeds">
+                                        Confirm
+                                    </v-btn>
+                                    <v-btn
+                                        variant="plain"
+                                        @click="closeSeedDialog">
+                                        Cancel
+                                    </v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                    </v-btn>
+                </v-card-title>
                 <v-card-subtitle
                     v-if="noSeeds"><i>Submit a seed above!</i>
                 </v-card-subtitle>
@@ -53,7 +87,8 @@ export default {
                 inRange: value => (value >= this.minSeed && value <= this.maxSeed) || 'Must be within range',
             },
             noSeeds: true,
-            submitHover: false
+            submitHover: false,
+            showSeedDialog: false
         }
     },
     computed: {
@@ -91,6 +126,12 @@ export default {
         },
         clearSeed: function() {
             this.currSeed = ''
+        },
+        closeSeedDialog() { //Closes the seed dialog by turning the controlling boolean to false
+            this.showSeedDialog = false
+        },
+        clearAllSeeds() { //Clears all seeds and closes the dialog
+            this.closeSeedDialog()
         }
     }
 }
@@ -101,17 +142,21 @@ export default {
     font-size: 15px;
     color: #10B77F;
 }
-.v-card {
+.submitted-seeds {
     color: #185E4D;
     width: 100%;
     background-color: transparent;
     transition: color 0.3s ease;
 }
-.v-card.submitHover {
+.submitted-seeds.submitHover {
     color: #10B77F;
 }
 .v-card-title {
     font-size: 17px;
     color: #10B77F
+}
+.clear-seeds {
+    width: 2em;
+    height: 2em;
 }
 </style>
