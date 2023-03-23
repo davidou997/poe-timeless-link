@@ -35,7 +35,7 @@
                             activator="parent"
                             width="auto"
                             transition="fade-transition">
-                            <v-card>
+                            <v-card class="seed-dialog">
                                 <v-card-text>
                                     Are you sure you want to clear all seeds?
                                 </v-card-text>
@@ -158,5 +158,9 @@ export default {
 .clear-seeds {
     width: 2em;
     height: 2em;
+}
+.seed-dialog {
+    background-color: #1D262F;
+    color: #10B77F;
 }
 </style>
