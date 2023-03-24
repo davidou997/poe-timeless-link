@@ -64,11 +64,17 @@ export default {
         //   route: '/search'
         // },
         {
+          name: 'Wiki',
+          iconName: 'mdi-information-outline',
+          route: 'https://www.poewiki.net/wiki/Timeless_Jewel',
+          external: true
+        },
+        {
           name: 'Repo',
           iconName: 'mdi-source-branch',
           route: 'https://github.com/davidou997/timeless-bulk',
           external: true
-        }
+        },
       ]
     }
   }
