@@ -163,6 +163,9 @@ export default createStore({
     deleteSeed(state, seed) { //Removes the submitted seed from the set
       state.currentSeeds.delete(seed)
     },
+    deleteSeeds(state) { //Removes all submitted seeds from the set
+      state.currentSeeds.clear()
+    },
     submitConq(state, conq) { //Adds the submitted conq to the set
       state.currentConqs.add(conq)
     },

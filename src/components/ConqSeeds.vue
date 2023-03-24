@@ -131,7 +131,9 @@ export default {
             this.showSeedDialog = false
         },
         clearAllSeeds() { //Clears all seeds and closes the dialog
+            this.$store.commit('deleteSeeds')
             this.closeSeedDialog()
+            this.noSeeds = true
         }
     }
 }
