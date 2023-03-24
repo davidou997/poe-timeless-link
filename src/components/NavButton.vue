@@ -34,7 +34,12 @@ export default {
         },
         route: { //Route when button is clicked
             required: true,
-            type: String
+            type: String,
+            default: ''
+        },
+        external: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -44,11 +49,19 @@ export default {
         }
     },
     methods: {
-        goToRoute: function() { //Goes to routed page if the current page isn't the intended destination
-            if(!(this.$route.name.toLowerCase() === this.route.substring(1))){
-                console.log('yes')
-                this.$router.push(this.route)
+        /**
+         * Goes to the routed page if the curreng page isn't the intended destination.
+         * Opens external link in new tab if external boolean is true
+         */
+        goToRoute() { //Goes to routed page if the current page isn't the intended destination
+            if(this.external) { //Checks if external
+                window.open(this.route, '_blank', 'noreferrer')
+            } else { 
+                if(!(this.$route.name.toLowerCase() === this.route.substring(1))){ //Only if current route doesn't match intended route
+                    this.$router.push(this.route)
+                }
             }
+            
         }
     },
     computed: {
