@@ -189,6 +189,12 @@ export default createStore({
     generateLinks(context) { //Will generate links by contacting POE API
       let seeds = Array.from(context.getters.getCurrentSeeds)
       let conqs = Array.from(context.getters.getCurrentConqs)
+      if(conqs.length < 1) { //If none are selected, use all conqs
+        context.getters.getJewelConqs(context.getters.getCurrentJewel).forEach((conqInfo) => {
+          //Cycles through all of the conq info and pushes its name
+          conqs.push(conqInfo.name)
+        })
+      }
       if(seeds.length > 0 && conqs.length > 0) { //Only do something if there are seeds and conqs
         context.commit('clearLinks') //Clear all previous links
         let chunkSize = Math.floor(38 / conqs.length) //Compute chunk size, max number of modifiers are 38
