@@ -22,8 +22,11 @@
             <td>
                 <a :href="link.link"
                     target="_blank"
-                    rel="noopener noreferrer">
-                    {{ link.link }}
+                    rel="noopener noreferrer"
+                    style="text-decoration: none;">
+                    <!-- {{ link.link }} -->
+                    <v-icon size="x-small" class="mr-1">mdi-open-in-new</v-icon>
+                    <u>Open</u>
                 </a>
             </td>
             <td>
