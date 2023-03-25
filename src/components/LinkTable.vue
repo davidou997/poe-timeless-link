@@ -32,8 +32,7 @@
                     size="small"
                     width="100%"
                     height="100%"
-                    rounded="rounded-shape"
-                    >
+                    :rounded="0">
                     <v-icon>
                         mdi-content-copy
                     </v-icon>
@@ -44,7 +43,9 @@
                     class="ma-0 pa-0 text-none"
                     variant="tonal"
                     width="100%"
-                    height="100%">
+                    height="100%"
+                    :rounded="0"
+                    @click="openTradeLink(link.link)">
                     <v-icon
                         size="small"
                         class="mr-2">
@@ -81,6 +82,9 @@ export default {
                 }
             }
             return finalString
+        },
+        openTradeLink(url) {
+            window.open(url, '_blank', 'noreferrer')
         }
     }
 }
