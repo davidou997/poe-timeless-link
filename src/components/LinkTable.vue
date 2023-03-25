@@ -32,7 +32,8 @@
                     size="small"
                     width="100%"
                     height="100%"
-                    :rounded="0">
+                    :rounded="0"
+                    @click="copyToClipBoard(link.link)">
                     <v-icon>
                         mdi-content-copy
                     </v-icon>
@@ -72,8 +73,8 @@ export default {
             return this.$store.getters.getGeneratedLinks
         }
     },
-    methods: { //Takes an array of strings and converts into a comma delimited string
-        seedString: function(seedArray) {
+    methods: { 
+        seedString(seedArray) { //Takes an array of strings and converts into a comma delimited string
             let finalString = ''
             for(let i = 0; i < seedArray.length; i++) {
                 finalString += seedArray[i]
@@ -85,6 +86,9 @@ export default {
         },
         openTradeLink(url) {
             window.open(url, '_blank', 'noreferrer')
+        },
+        copyToClipBoard(content) {
+            navigator.clipboard.writeText(content)
         }
     }
 }
