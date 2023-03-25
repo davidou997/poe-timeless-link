@@ -6,16 +6,16 @@
     density="comfortable">
     <thead>
         <tr>
-            <th class="text-left copy-column">
+            <th class="copy-column">
                 Copy
             </th>
-            <th class="text-left link-column">
+            <th class="link-column">
                 Link
             </th>
-            <th class="text-left conq-column">
+            <th class="conq-column">
                 Conquerors
             </th>
-            <th class="text-left seed-column">
+            <th class="seed-column">
                 Seed(s)
             </th>
         </tr>
@@ -25,25 +25,33 @@
             v-for="(link, index) in links"
             :key="index"
             class="column-text">
-            <td class="d-flex justify-center align-center">
+            <td class="pa-0 justify-center align-center">
                 <v-btn
-                    variant="plain"
+                    class="ma-0 pa-0"
+                    variant="tonal"
                     size="small"
-                    :icon="'mdi-content-copy'">
+                    width="100%"
+                    height="100%"
+                    rounded="rounded-shape"
+                    >
+                    <v-icon>
+                        mdi-content-copy
+                    </v-icon>
                 </v-btn>
             </td>
-            <td>
-                <a :href="link.link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style="text-decoration: none;">
+            <td class="pa-0 justify-center align-center">
+                <v-btn
+                    class="ma-0 pa-0 text-none"
+                    variant="tonal"
+                    width="100%"
+                    height="100%">
                     <v-icon
-                        size="x-small"
-                        class="mr-1">
+                        size="small"
+                        class="mr-2">
                         mdi-open-in-new
                     </v-icon>
-                    <u>Open</u>
-                </a>
+                    <span>Open</span>
+                </v-btn>
             </td>
             <td>
                 Conq 1, Conq 2, Conq 3
@@ -89,13 +97,13 @@ export default {
     background-color: transparent;
 }
 .link-column {
-    width: 15%;
+    width: 10%;
 }
 .conq-column {
-    width: 40%;
+    width: 30%;
 }
 .seed-column {
-    width: 40%;
+    width: 55%;
 }
 a:link, a:visited, .column-text {
     color: #10B77F;
