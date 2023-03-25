@@ -84,13 +84,13 @@ export default {
             }
             return finalString
         },
-        openTradeLink(url) {
+        openTradeLink(url) { //Opens the passed url in a new window
             window.open(url, '_blank', 'noreferrer')
         },
-        copyToClipBoard(content) {
+        copyToClipBoard(content) { //Copys the passed content into the clipboard
             navigator.clipboard.writeText(content)
         }
-    }
+    },
 }
 </script>
 
