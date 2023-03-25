@@ -1,11 +1,11 @@
 <template>
-  <v-btn
-    variant="outlined"
-    size="large"
-    @mouseenter="buttonHov = true"
-    @mouseleave="buttonHov = false"
-    @click="genLinks"
-    :class="buttonHov ? 'option-alt-text' : 'option-text'">
+    <v-btn
+        variant="outlined"
+        size="large"
+        @mouseenter="buttonHov = true"
+        @mouseleave="buttonHov = false"
+        @click="genLinks"
+        :class="buttonHov ? 'option-alt-text' : 'option-text'">
     <v-icon
         class="mr-1">
         mdi-link-variant
@@ -14,19 +14,41 @@
         class="text-none"
         :class="buttonHov ? 'text-alt' : ''"
         >Generate Links</span>
-  </v-btn>
+    </v-btn>
+    <div
+        v-show="showError"
+        class="pt-3 pl-2 text-red-darken-3 error">
+        <v-icon>mdi-alert-circle</v-icon>
+        <strong class="ml-1">Missing seeds</strong>
+    </div>
 </template>
 
 <script>
 export default {
     data() {
         return { //If the button is hovered on
-            buttonHov: false
+            buttonHov: false,
+            showError: false
         }
+    },
+    computed: {
+        seedAmount() {
+            return this.$store.getters.getCurrentSeeds.size
+        },
     },
     methods: {
         genLinks() { //Generates links based on selected criteria
-            this.$store.dispatch('generateLinks')
+            if(this.seedAmount > 0) {
+                this.$store.dispatch('generateLinks')
+            } else {
+                this.displayError()
+            }
+        },
+        displayError() {
+            this.showError = true
+            setTimeout(() => {
+                this.showError = false
+            }, 1500)
         }
     }
 }
@@ -46,5 +68,22 @@ export default {
 }
 .text-alt {
     text-decoration: underline;
+}
+.error {
+    animation: error ease 1.5s
+}
+@keyframes error {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% { 
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 </style>

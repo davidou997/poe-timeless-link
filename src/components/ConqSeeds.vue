@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container class="pa-3">
         <v-row>
             <v-text-field
                 class="mt-3 mb-2"
@@ -15,18 +15,65 @@
                 @keydown.enter="submitSeed"/>
         </v-row>
         <v-row>
-            <v-chip
-                v-for="(seed, index) in currentSeeds"
-                :key="index"
+            <v-card
+                class="pa-1 pb-3 submitted-seeds"
                 variant="outlined"
-                closable
-                close-icon="mdi-close-circle"
-                color="#10B77F"
-                class="ma-1"
-                size="large"
-                @click.close="deleteSeed(seed)">
-                <span class="text">{{ seed }}</span>
-            </v-chip>
+                @mouseenter="submitHover = true"
+                @mouseleave="submitHover = false"
+                :class="submitHover ? 'submitHover' : ''">
+                <v-card-title>
+                    <span>Submitted Seeds</span>
+                    <v-btn
+                        v-if="!noSeeds"
+                        variant="plain"
+                        icon="mdi-delete"
+                        class="clear-seeds"
+                        position="absolute">
+                        <v-icon>mdi-delete</v-icon>
+                        <v-dialog
+                            v-model="showSeedDialog"
+                            activator="parent"
+                            width="auto"
+                            transition="fade-transition">
+                            <v-card class="seed-dialog">
+                                <v-card-text>
+                                    Are you sure you want to clear all seeds?
+                                </v-card-text>
+                                <v-card-actions>
+                                    <v-btn
+                                        class="ml-2"
+                                        variant="plain"
+                                        @click="clearAllSeeds">
+                                        Confirm
+                                    </v-btn>
+                                    <v-btn
+                                        variant="plain"
+                                        @click="closeSeedDialog">
+                                        Cancel
+                                    </v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                    </v-btn>
+                </v-card-title>
+                <v-card-subtitle
+                    v-if="noSeeds"><i>Submit a seed above!</i>
+                </v-card-subtitle>
+                <div class="px-3">
+                    <v-chip
+                        v-for="(seed, index) in currentSeeds"
+                        :key="index"
+                        variant="outlined"
+                        closable
+                        close-icon="mdi-close-circle"
+                        color="#10B77F"
+                        class="ma-1"
+                        size="large"
+                        @click.close="deleteSeed(seed)">
+                        <span class="text">{{ seed }}</span>
+                    </v-chip>
+                </div>
+            </v-card>
         </v-row>
     </v-container>
 </template>
@@ -38,7 +85,10 @@ export default {
             currSeed: '', //The current seed
             rules: { //Rules to display error messages for input
                 inRange: value => (value >= this.minSeed && value <= this.maxSeed) || 'Must be within range',
-            }
+            },
+            noSeeds: true,
+            submitHover: false,
+            showSeedDialog: false
         }
     },
     computed: {
@@ -61,13 +111,29 @@ export default {
             if(this.currSeed && this.currSeed >= this.minSeed && this.currSeed <= this.maxSeed) {
                 this.$store.commit('submitSeed', this.currSeed)
                 this.clearSeed()
+
+                if(this.noSeeds) { //Remove default message when a seed is added
+                    this.noSeeds = false
+                }
             }
         },
         deleteSeed: function(seed) { //Deletes the seed from the chip
             this.$store.commit('deleteSeed', seed)
+            if(this.currentSeeds.size === 0) {
+                console.log(this.currentSeeds.size)
+                this.noSeeds = true
+            }
         },
         clearSeed: function() {
             this.currSeed = ''
+        },
+        closeSeedDialog() { //Closes the seed dialog by turning the controlling boolean to false
+            this.showSeedDialog = false
+        },
+        clearAllSeeds() { //Clears all seeds and closes the dialog
+            this.$store.commit('deleteSeeds')
+            this.closeSeedDialog()
+            this.noSeeds = true
         }
     }
 }
@@ -76,6 +142,27 @@ export default {
 <style scoped>
 .v-text-field {
     font-size: 15px;
+    color: #10B77F;
+}
+.submitted-seeds {
+    color: #185E4D;
+    width: 100%;
+    background-color: transparent;
+    transition: color 0.3s ease;
+}
+.submitted-seeds.submitHover {
+    color: #10B77F;
+}
+.v-card-title {
+    font-size: 17px;
+    color: #10B77F
+}
+.clear-seeds {
+    width: 2em;
+    height: 2em;
+}
+.seed-dialog {
+    background-color: #1D262F;
     color: #10B77F;
 }
 </style>

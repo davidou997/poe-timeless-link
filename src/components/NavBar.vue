@@ -15,23 +15,24 @@
       </v-btn>
     </v-toolbar-title>
     <v-toolbar-items>
-      <!-- <nav-button
+      <nav-button
         v-for="(item, index) in navigationInfo"
         v-bind:key="index"
        :icon-name="item.iconName"
        :text="item.name"
-       :route="item.route"/> -->
+       :route="item.route"
+       :external="item.external"/>
     </v-toolbar-items>
   </v-toolbar>
 </template>
 
 <script>
 import jewel from "../assets/timeless_jewel.png"
-// import NavButton from "./NavButton.vue"
+import NavButton from "./NavButton.vue"
 
 export default {
   components: {
-    // NavButton
+    NavButton
   },
   methods: {
     goHome: function() { //Goes to home page
@@ -47,20 +48,32 @@ export default {
   computed: {
     navigationInfo() { //Info for navigation buttons
       return [
+        // {
+        //   name: 'Home',
+        //   iconName: 'mdi-home',
+        //   route: '/'
+        // },
+        // {
+        //   name: 'About',
+        //   iconName: 'mdi-help',
+        //   route: '/about'
+        // },
+        // {
+        //   name: 'Search',
+        //   iconName: 'mdi-magnify',
+        //   route: '/search'
+        // },
         {
-          name: 'Home',
-          iconName: 'mdi-home',
-          route: '/'
+          name: 'Wiki',
+          iconName: 'mdi-information-outline',
+          route: 'https://www.poewiki.net/wiki/Timeless_Jewel',
+          external: true
         },
         {
-          name: 'About',
-          iconName: 'mdi-help',
-          route: '/about'
-        },
-        {
-          name: 'Search',
-          iconName: 'mdi-magnify',
-          route: '/search'
+          name: 'Repo',
+          iconName: 'mdi-source-branch',
+          route: 'https://github.com/davidou997/timeless-bulk',
+          external: true
         },
       ]
     }

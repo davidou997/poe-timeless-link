@@ -6,10 +6,16 @@
     density="comfortable">
     <thead>
         <tr>
-            <th class="text-left link-column">
+            <th class="copy-column">
+                Copy
+            </th>
+            <th class="link-column">
                 Link
             </th>
-            <th class="text-left">
+            <th class="conq-column">
+                Conquerors
+            </th>
+            <th class="seed-column">
                 Seed(s)
             </th>
         </tr>
@@ -19,15 +25,41 @@
             v-for="(link, index) in links"
             :key="index"
             class="column-text">
-            <td>
-                <a :href="link.link"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    {{ link.link }}
-                </a>
+            <td class="pa-0 justify-center align-center">
+                <v-btn
+                    class="ma-0 pa-0"
+                    variant="tonal"
+                    size="small"
+                    width="100%"
+                    height="100%"
+                    :rounded="0"
+                    @click="copyToClipBoard(link.link)">
+                    <v-icon>
+                        mdi-content-copy
+                    </v-icon>
+                </v-btn>
+            </td>
+            <td class="pa-0 justify-center align-center">
+                <v-btn
+                    class="ma-0 pa-0 text-none"
+                    variant="tonal"
+                    width="100%"
+                    height="100%"
+                    :rounded="0"
+                    @click="openTradeLink(link.link)">
+                    <v-icon
+                        size="small"
+                        class="mr-2">
+                        mdi-open-in-new
+                    </v-icon>
+                    <span>Open</span>
+                </v-btn>
             </td>
             <td>
-                {{ seedString(link.seeds) }}
+                {{ arrayToString(link.conqs) }}
+            </td>
+            <td>
+                {{ arrayToString(link.seeds) }}
             </td>
         </tr>
     </tbody>
@@ -41,22 +73,31 @@ export default {
             return this.$store.getters.getGeneratedLinks
         }
     },
-    methods: { //Takes an array of strings and converts into a comma delimited string
-        seedString: function(seedArray) {
+    methods: {
+        arrayToString(arr) { //Takes an array of strings and converts into a comma delimited string
             let finalString = ''
-            for(let i = 0; i < seedArray.length; i++) {
-                finalString += seedArray[i]
-                if(i < seedArray.length - 1) {
+            for(let i = 0; i < arr.length; i++) {
+                finalString += arr[i]
+                if(i < arr.length - 1) {
                     finalString += ', '
                 }
             }
             return finalString
+        },
+        openTradeLink(url) { //Opens the passed url in a new window
+            window.open(url, '_blank', 'noreferrer')
+        },
+        copyToClipBoard(content) { //Copys the passed content into the clipboard
+            navigator.clipboard.writeText(content)
         }
     }
 }
 </script>
 
 <style scoped>
+.copy-column {
+    width: 5%;
+}
 .link-table {
     width: 100%;
     border: 1px #10B77F solid;
@@ -64,7 +105,13 @@ export default {
     background-color: transparent;
 }
 .link-column {
-    width: 60%;
+    width: 10%;
+}
+.conq-column {
+    width: 30%;
+}
+.seed-column {
+    width: 55%;
 }
 a:link, a:visited, .column-text {
     color: #10B77F;
