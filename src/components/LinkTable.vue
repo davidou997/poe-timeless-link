@@ -6,10 +6,16 @@
     density="comfortable">
     <thead>
         <tr>
+            <th class="text-left copy-column">
+                Copy
+            </th>
             <th class="text-left link-column">
                 Link
             </th>
-            <th class="text-left">
+            <th class="text-left conq-column">
+                Conquerors
+            </th>
+            <th class="text-left seed-column">
                 Seed(s)
             </th>
         </tr>
@@ -19,15 +25,28 @@
             v-for="(link, index) in links"
             :key="index"
             class="column-text">
+            <td class="d-flex justify-center align-center">
+                <v-btn
+                    variant="plain"
+                    size="small"
+                    :icon="'mdi-content-copy'">
+                </v-btn>
+            </td>
             <td>
                 <a :href="link.link"
                     target="_blank"
                     rel="noopener noreferrer"
                     style="text-decoration: none;">
-                    <!-- {{ link.link }} -->
-                    <v-icon size="x-small" class="mr-1">mdi-open-in-new</v-icon>
+                    <v-icon
+                        size="x-small"
+                        class="mr-1">
+                        mdi-open-in-new
+                    </v-icon>
                     <u>Open</u>
                 </a>
+            </td>
+            <td>
+                Conq 1, Conq 2, Conq 3
             </td>
             <td>
                 {{ seedString(link.seeds) }}
@@ -60,6 +79,9 @@ export default {
 </script>
 
 <style scoped>
+.copy-column {
+    width: 5%;
+}
 .link-table {
     width: 100%;
     border: 1px #10B77F solid;
@@ -67,7 +89,13 @@ export default {
     background-color: transparent;
 }
 .link-column {
-    width: 60%;
+    width: 15%;
+}
+.conq-column {
+    width: 40%;
+}
+.seed-column {
+    width: 40%;
 }
 a:link, a:visited, .column-text {
     color: #10B77F;
