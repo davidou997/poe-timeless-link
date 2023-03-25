@@ -227,7 +227,8 @@ export default createStore({
         chunks.forEach(chunk => {
           let link = {
             link: baseLink,
-            seeds: chunk
+            seeds: chunk,
+            conqs: conqs
           }
           let query = JSON.parse(JSON.stringify(baseQuery))
           conqs.forEach(conq => {

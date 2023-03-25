@@ -56,10 +56,10 @@
                 </v-btn>
             </td>
             <td>
-                Conq 1, Conq 2, Conq 3
+                {{ arrayToString(link.conqs) }}
             </td>
             <td>
-                {{ seedString(link.seeds) }}
+                {{ arrayToString(link.seeds) }}
             </td>
         </tr>
     </tbody>
@@ -73,12 +73,12 @@ export default {
             return this.$store.getters.getGeneratedLinks
         }
     },
-    methods: { 
-        seedString(seedArray) { //Takes an array of strings and converts into a comma delimited string
+    methods: {
+        arrayToString(arr) { //Takes an array of strings and converts into a comma delimited string
             let finalString = ''
-            for(let i = 0; i < seedArray.length; i++) {
-                finalString += seedArray[i]
-                if(i < seedArray.length - 1) {
+            for(let i = 0; i < arr.length; i++) {
+                finalString += arr[i]
+                if(i < arr.length - 1) {
                     finalString += ', '
                 }
             }
@@ -90,7 +90,7 @@ export default {
         copyToClipBoard(content) { //Copys the passed content into the clipboard
             navigator.clipboard.writeText(content)
         }
-    },
+    }
 }
 </script>
 
