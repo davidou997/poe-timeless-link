@@ -72,7 +72,7 @@ export default {
         {
           name: 'Repo',
           iconName: 'mdi-source-branch',
-          route: 'https://github.com/davidou997/timeless-bulk',
+          route: 'https://github.com/davidou997/poe-timeless-link',
           external: true
         },
       ]
