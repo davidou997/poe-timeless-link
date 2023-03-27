@@ -18,9 +18,10 @@ export default {
     Footer,
     NavBar
   },
-  data: () => ({
-    //
-  }),
+  created() {
+    document.title = "poe-timeless.link"
+    console.log(document)
+  }
 }
 </script>
 
@@ -28,7 +29,6 @@ export default {
 .v-application {
   background-image: url('./assets/highgate.jpg');
   background-size: cover;
-  
 }
 .text {
   color: #F5F7FA
