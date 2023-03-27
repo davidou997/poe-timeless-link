@@ -11,7 +11,7 @@
         @mouseleave="hover = false"
         @click="goHome()">
         <img class="title-img mr-3" :src="jewel" alt="Timeless Jewel">
-        <span :class="hover ? 'nav-hover': 'text'" class="text-none local-font">timeless.bulk</span>
+        <span :class="hover ? 'nav-hover': 'text'" class="text-none local-font">poe-timeless.link</span>
       </v-btn>
     </v-toolbar-title>
     <v-toolbar-items>
