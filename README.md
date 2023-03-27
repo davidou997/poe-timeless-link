@@ -1,24 +1,11 @@
-# timeless-bulk
+# poe-timeless.link
 
-## Project setup
-```
-npm install
-```
+poe-timeless.link is a tool for generating trade links for timeless jewels for the Path of Exile ARPG. The site is built using the Vue.js framework and uses the Vuetify CSS framework. The visual appearance of the site is heavily inspired by [poe.ninja](https://poe.ninja).
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Why does this exist?
 
-### Compiles and minifies for production
-```
-npm run build
-```
+This project was intended to be a personal tool used for sniping 
+## License
 
-### Lints and fixes files
-```
-npm run lint
-```
+Please refer to the [LICENSE.md](/LICENSE.md) file.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
