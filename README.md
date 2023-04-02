@@ -1,6 +1,14 @@
 # poe-timeless.link
 
-[poe-timeless.link](https://www.poe-timeless.link/#/) is a tool for generating trade links for timeless jewels for the Path of Exile ARPG. The site is built using the Vue.js framework and uses the Vuetify CSS framework. The visual appearance of the site is heavily inspired by [poe.ninja](https://poe.ninja).
+##Table of Contents
+1. [What is This?](#what-is-this)
+2. [What are Timeless Jewels?](#what-are-timeless-jewels)
+3. [Why Does This Exist?](#why-does-this-exist)
+4. [License](#license)
+
+
+##What is This?
+[poe-timeless.link](https://www.poe-timeless.link/#/) is a tool for generating trade links for timeless jewels for the Path of Exile ARPG. The site is built using the Vue.js framework and uses the Vuetify CSS framework. The visual appearance of the site is heavily inspired by [poe.ninja](https://poe.ninja). You can visit the site [here](https://www.poe-timeless.link/#/)
 
 
 ## What are Timeless Jewels?
@@ -15,9 +23,11 @@ More about timeless jewels can be found on the community wiki's article on timel
 
 ## Why Does This Exist?
 
-The idea for this project came up when a player cracked the code for [how timeless jewels worked](https://www.reddit.com/r/pathofexile/comments/vpupzh/heres_how_timeless_jewels_work/) back in June 2022. Eventually, [Path of Building](https://pathofbuilding.community/), a powerful and popular community build planner tool, added a feature that allowed players to view exactly how each timeless jewel and seed combination affected the passive tree. Additionally, the feature allowed players to specify desired tree modifiers and the feature would return a list of timeless jewel seeds that best match their specifications. As a result, players became able to plan ahead to include specific timeless jewels into their endgame builds, and as such, certain timeless jewels and seed combinations became very valuable.
+The idea for this project came up when a player cracked the code on [how timeless jewels worked](https://www.reddit.com/r/pathofexile/comments/vpupzh/heres_how_timeless_jewels_work/) back in June 2022. Eventually, [Path of Building](https://pathofbuilding.community/), a powerful and popular community build planner tool, added a feature that allowed players to view exactly how each timeless jewel and seed combination affected the passive tree. Additionally, the feature allowed players to specify desired tree modifiers and the feature would return a list of timeless jewel seeds that best match their specifications. As a result, players became able to plan ahead to include specific timeless jewels into their endgame builds, and as such, certain timeless jewels and seed combinations became very valuable.
 
-This project was intended to be a personal tool used for obtaining timeless jewels with specific seeds from the trade system of Path of Exile. Currently, Path of Building already has a similar functionality as this site, but it allows little control over exactly how many unique seed values you'd like to generate a trade link for. Additionally, Militant Faith, a timeless jewel variant, has addtional modifiers on the jewel that grant additional stats based on the amount of Devotion allocated within the jewel's radius on the tree. Path of Building currently does not have a way to generate trade links that account for these modifiers. These features are in the works for a future update.
+This project was intended to be a personal tool used for obtaining timeless jewels with specific seeds from the trade system of Path of Exile. Currently, Path of Building already has a similar functionality as this site, but it allows little control over exactly how many unique seed values you'd like to generate a trade link for. Additionally, Militant Faith, a timeless jewel variant, has addtional modifiers on the jewel that grant additional stats based on the amount of Devotion allocated within the jewel's radius on the tree. Path of Building currently does not have a way to generate trade links that account for these modifiers. There are plans to add this feature to this application in a future update.
+
+
 
 ## License
 
