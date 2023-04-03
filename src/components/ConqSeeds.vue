@@ -111,18 +111,10 @@ export default {
             if(this.currSeed && this.currSeed >= this.minSeed && this.currSeed <= this.maxSeed) {
                 this.$store.commit('submitSeed', this.currSeed)
                 this.clearSeed()
-
-                if(this.noSeeds) { //Remove default message when a seed is added
-                    this.noSeeds = false
-                }
             }
         },
         deleteSeed: function(seed) { //Deletes the seed from the chip
             this.$store.commit('deleteSeed', seed)
-            if(this.currentSeeds.size === 0) {
-                console.log(this.currentSeeds.size)
-                this.noSeeds = true
-            }
         },
         clearSeed: function() {
             this.currSeed = ''
@@ -133,7 +125,15 @@ export default {
         clearAllSeeds() { //Clears all seeds and closes the dialog
             this.$store.commit('deleteSeeds')
             this.closeSeedDialog()
-            this.noSeeds = true
+        }
+    },
+    watch: {
+        'currentSeeds.size'(size) { //Watches size of submitted seeds and sets the delete all toggle appropriately
+            if(size < 1) {
+                this.noSeeds = true
+            } else {
+                this.noSeeds = false
+            }
         }
     }
 }
