@@ -1,13 +1,13 @@
 # poe-timeless.link
 
-##Table of Contents
+## Table of Contents
 1. [What is This?](#what-is-this)
 2. [What are Timeless Jewels?](#what-are-timeless-jewels)
 3. [Why Does This Exist?](#why-does-this-exist)
 4. [License](#license)
 
 
-##What is This?
+## What is This?
 [poe-timeless.link](https://www.poe-timeless.link/#/) is a tool for generating trade links for timeless jewels for the Path of Exile ARPG. The site is built using the Vue.js framework and uses the Vuetify CSS framework. The visual appearance of the site is heavily inspired by [poe.ninja](https://poe.ninja). You can visit the site [here](https://www.poe-timeless.link/#/)
 
 
