@@ -59,7 +59,7 @@
                 <v-card-subtitle
                     v-if="noSeeds"><i>Submit a seed above!</i>
                 </v-card-subtitle>
-                <div class="px-3">
+                <div class="px-3" :key="renderCount">
                     <v-chip
                         v-for="(seed, index) in currentSeeds"
                         :key="index"
@@ -70,7 +70,7 @@
                         class="ma-1"
                         size="large"
                         @click.close="deleteSeed(seed)">
-                        <span class="text">{{ seed }}</span>
+                        <span class="text">{{ seed }}</span> 
                     </v-chip>
                 </div>
             </v-card>
@@ -82,13 +82,14 @@
 export default {
     data() {
         return {
+            renderCount: 0, //Forces re-render of the list of seeds
             currSeed: '', //The current seed
             rules: { //Rules to display error messages for input
                 inRange: value => (value >= this.minSeed && value <= this.maxSeed) || 'Must be within range',
             },
-            noSeeds: true,
-            submitHover: false,
-            showSeedDialog: false
+            noSeeds: true, //If there are no seeds
+            submitHover: false, //If the mouse is on the hover button
+            showSeedDialog: false //If the modal is shown
         }
     },
     computed: {
@@ -115,8 +116,9 @@ export default {
         },
         deleteSeed: function(seed) { //Deletes the seed from the chip
             this.$store.commit('deleteSeed', seed)
+            this.renderCount++
         },
-        clearSeed: function() {
+        clearSeed: function() { //Clears the seed text field
             this.currSeed = ''
         },
         closeSeedDialog() { //Closes the seed dialog by turning the controlling boolean to false
